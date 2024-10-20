@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harry's Emo Haven</title>
+<title>Harry's Emo Room</title>
 <style>
     body {
         background: linear-gradient(to bottom, #000000, #990000);
@@ -13,6 +13,16 @@
     header {
         text-align: center;
         padding: 50px;
+    }
+    nav {
+        text-align: center;
+        margin: 20px;
+    }
+    nav a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 18px;
     }
     .album-list {
         list-style-type: none;
@@ -26,18 +36,36 @@
         border: 1px solid #990000;
         padding: 20px;
     }
+    section {
+        display: none;
+    }
+    section.active {
+        display: block;
+    }
 </style>
+<script>
+    function showSection(id) {
+        document.querySelectorAll('section').forEach(function(section) {
+            section.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+    }
+</script>
 </head>
-<body>
+<body onload="showSection('about')">
 <header>
-    <h1>Harry's Emo Haven</h1>
+    <h1>Harry's Emo Room</h1>
     <p>Being your emo boy embracing emo music and queerness.</p>
 </header>
-<section class="bio">
+<nav>
+    <a href="#" onclick="showSection('about')">About Me</a>
+    <a href="#" onclick="showSection('albums')">Favorite Albums</a>
+</nav>
+<section id="about" class="bio active">
     <h2>About Me</h2>
-    <p>Hey, I'm Harry, but you might know me as nicknel2on or thatemoboythatexists. Im gay and emo. Very good with them computers custom made this site lol. I code in html slightly C# but suck at C#.</p>
+    <p>Hey, I'm Harry, but you might know me as thatemoboythatexists. I'm gay and emo. Very good with computers—custom made this site lol. I code in HTML, slightly C#, but suck at C#.</p>
 </section>
-<section>
+<section id="albums">
     <h2>Favorite Albums</h2>
     <ul class="album-list">
         <li>American Idiot by Green Day</li>
