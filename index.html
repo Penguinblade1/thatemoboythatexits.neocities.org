@@ -9,20 +9,50 @@
         background: linear-gradient(to bottom, #000000, #990000);
         color: #ffffff;
         font-family: 'Courier New', Courier, monospace;
-    }
-    header {
-        text-align: center;
-        padding: 50px;
+        margin: 0;
     }
     nav {
-        text-align: center;
-        margin: 20px;
+        background-color: #000000;
+        padding: 20px;
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+        transition: transform 0.3s ease;
     }
     nav a {
         color: #ffffff;
         text-decoration: none;
-        margin: 0 15px;
+        margin: 15px 0;
         font-size: 18px;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    nav a:hover {
+        background: #990000;
+    }
+    .content {
+        margin-left: 220px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    header {
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        margin-bottom: 20px;
     }
     .album-list {
         list-style-type: none;
@@ -32,15 +62,74 @@
         margin: 10px 0;
     }
     .bio {
-        margin: 50px;
+        margin: 20px;
         border: 1px solid #990000;
         padding: 20px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
     }
     section {
         display: none;
+        width: 80%;
     }
     section.active {
         display: block;
+    }
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .gallery img {
+        margin: 10px;
+        max-width: 200px;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+    .contact-link {
+        border: 1px solid #990000;
+        padding: 20px;
+        width: 80%;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        text-align: center;
+    }
+    .contact-link a {
+        color: #ffffff;
+        text-decoration: none;
+        background: #990000;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    .contact-link a:hover {
+        background: #ff0000;
+    }
+    @media (max-width: 600px) {
+        nav {
+            width: 100%;
+            height: auto;
+            position: static;
+            flex-direction: row;
+            justify-content: space-around;
+            box-shadow: none;
+            transform: translateY(0);
+        }
+        .content {
+            margin-left: 0;
+            width: 100%;
+            padding-top: 80px; /* Adjust for the fixed nav height */
+        }
+        .bio, section, .contact-link {
+            width: 90%;
+        }
+        .gallery img {
+            max-width: 100px;
+        }
     }
 </style>
 <script>
@@ -50,36 +139,77 @@
         });
         document.getElementById(id).classList.add('active');
     }
+    function rotateQuotes() {
+        const quotes = [
+            "I'm not okay, I promise.",
+            "Welcome to the black parade.",
+            "Sometimes I give myself the creeps.",
+            "I walk a lonely road."
+        ];
+        const quoteElement = document.getElementById('quote');
+        let index = 0;
+        setInterval(() => {
+            quoteElement.textContent = quotes[index];
+            index = (index + 1) % quotes.length;
+        }, 3000);
+    }
+    window.onload = function() {
+        showSection('about');
+        rotateQuotes();
+    };
 </script>
 </head>
-<body onload="showSection('about')">
-<header>
-    <h1>Harry's Emo Room</h1>
-    <p>Being your emo boy embracing emo music and queerness.</p>
-</header>
+<body>
 <nav>
     <a href="#" onclick="showSection('about')">About Me</a>
     <a href="#" onclick="showSection('albums')">Favorite Albums</a>
+    <a href="#" onclick="showSection('gallery')">Favorite Bands Pictures</a>
+    <a href="#" onclick="showSection('contact')">Contact</a>
     <a href="https://www.tiktok.com/@thatemoboythatexists" target="_blank">TikTok</a>
 </nav>
-<section id="about" class="bio active">
-    <h2>About Me</h2>
-    <p>Hey, I'm Harry, but you might know me as thatemoboythatexists. I'm gay and emo. Very good with computers—custom made this site lol. I code in HTML, slightly C#, but suck at C#.</p>
-</section>
-<section id="albums">
-    <h2>Favorite Albums</h2>
-    <ul class="album-list">
-        <li>American Idiot by Green Day</li>
-        <li>The Black Parade by My Chemical Romance</li>
-        <li>Nevermind by Nirvana</li>
-        <li>21st Century Breakdown by Green Day</li>
-        <li>Three Cheers for Sweet Revenge by My Chemical Romance</li>
-        <li>Saviors by Green Day</li>
-        <li>Dookie by Green Day</li>
-        <li>Blurryface by Twenty One Pilots</li>
-        <li>Vessel by Twenty One Pilots</li>
-        <li>Clancy by Twenty One Pilots</li>
-    </ul>
-</section>
+<div class="content">
+    <header>
+        <h1>Harry's Emo Room</h1>
+        <p>Being your emo boy embracing emo music and queerness.</p>
+        <div id="quote" style="font-style: italic; font-size: 24px; margin-top: 20px;"></div>
+    </header>
+    <section id="about" class="bio active">
+        <h2>About Me</h2>
+        <p>Hey, I'm Harry, but you might know me as thatemoboythatexists. I'm gay and emo. Very good with computers—custom made this site lol. I code in HTML, slightly C#, but suck at C#.</p>
+    </section>
+    <section id="albums">
+        <h2>Favorite Albums</h2>
+        <ul class="album-list">
+            <li>American Idiot by Green Day</li>
+            <li>The Black Parade by My Chemical Romance</li>
+            <li>Nevermind by Nirvana</li>
+            <li>21st Century Breakdown by Green Day</li>
+            <li>Three Cheers for Sweet Revenge by My Chemical Romance</li>
+            <li>Saviors by Green Day</li>
+            <li>Dookie by Green Day</li>
+            <li>Blurryface by Twenty One Pilots</li>
+            <li>Vessel by Twenty One Pilots</li>
+            <li>Clancy by Twenty One Pilots</li>
+        </ul>
+    </section>
+    <section id="gallery">
+        <h2>Favorite Bands Pictures</h2>
+        <div class="gallery">
+            <!-- Add your images here -->
+            <img src="image1.jpg" alt="Emo Image 1">
+            <img src="image2.jpg" alt="Emo Image 2">
+            <img src="image3.jpg" alt="Emo Image 3">
+            <img src="image4.jpg" alt="Emo Image 4">
+            <img src="image5.jpg" alt="Emo Image 5">
+            <img src="image6.jpg" alt="Emo Image 6">
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-link">
+            <a href="https://nicknel2on.carrd.co" target="_blank">Contact Me</a>
+        </div>
+    </section>
+</div>
 </body>
 </html>
