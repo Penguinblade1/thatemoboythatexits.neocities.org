@@ -4,130 +4,176 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harry's Emo Room</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> <!-- Emo-like font -->
 <style>
     body {
-        background: linear-gradient(to bottom, #000000, #990000);
+        background: linear-gradient(to bottom, #0a0a0a, #e20613); /* Darker black to blood red */
         color: #ffffff;
-        font-family: 'Courier New', Courier, monospace;
+        font-family: 'VT323', monospace; /* Emo-style font */
         margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
+
     nav {
-        background-color: #000000;
+        background-color: #0a0a0a;
         padding: 20px;
-        width: 200px;
-        height: 100vh;
         position: fixed;
         top: 0;
         left: 0;
+        height: 100vh;
+        width: 220px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-        transition: transform 0.3s ease;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
     }
+
     nav a {
         color: #ffffff;
         text-decoration: none;
         margin: 15px 0;
         font-size: 18px;
-        width: 100%;
-        text-align: center;
         padding: 10px;
         border-radius: 5px;
+        text-align: center;
+        width: 100%;
         transition: background 0.3s;
+        font-family: 'VT323', monospace; /* Emo-style font */
     }
+
     nav a:hover {
-        background: #990000;
+        background: #e20613;
     }
+
     .content {
-        margin-left: 220px;
+        margin-left: 240px;
         padding: 20px;
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+
     header {
-        text-align: center;
         width: 100%;
         padding: 20px;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(10, 10, 10, 0.9); /* Almost black */
+        text-align: center;
         border-radius: 10px;
         margin-bottom: 20px;
     }
+
+    header h1 {
+        font-size: 36px;
+        margin: 0;
+        font-family: 'VT323', monospace; /* Emo-style font */
+    }
+
+    header p {
+        margin: 10px 0;
+        font-family: 'VT323', monospace;
+    }
+
     .album-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
         list-style-type: none;
         padding: 0;
     }
+
     .album-list li {
-        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-    .bio {
-        margin: 20px;
-        border: 1px solid #990000;
-        padding: 20px;
-        width: 80%;
-        background: rgba(0, 0, 0, 0.5);
+
+    .album-list img {
+        max-width: 150px;
         border-radius: 10px;
+        margin-bottom: 10px;
     }
+
+    .bio {
+        background: rgba(10, 10, 10, 0.8); /* Slightly transparent black */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 800px;
+        text-align: center;
+    }
+
     section {
         display: none;
-        width: 80%;
     }
+
     section.active {
         display: block;
     }
+
     .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
     }
+
     .gallery img {
-        margin: 10px;
-        max-width: 200px;
+        width: 100%;
         border-radius: 10px;
-        transition: transform 0.3s;
+        transition: transform 0.3s ease-in-out;
     }
+
     .gallery img:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
-    .contact-link {
-        border: 1px solid #990000;
-        padding: 20px;
-        width: 80%;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        text-align: center;
-    }
-    .contact-link a {
-        color: #ffffff;
-        text-decoration: none;
-        background: #990000;
-        padding: 10px 20px;
+
+    .mobile-nav-toggle {
+        display: none;
+        background-color: #e20613;
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 18px;
         border-radius: 5px;
-        transition: background 0.3s;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1001;
     }
-    .contact-link a:hover {
-        background: #ff0000;
-    }
-    @media (max-width: 600px) {
+
+    @media (max-width: 800px) {
         nav {
+            transform: translateX(-100%);
             width: 100%;
             height: auto;
-            position: static;
-            flex-direction: row;
-            justify-content: space-around;
-            box-shadow: none;
-            transform: translateY(0);
+            padding: 10px;
         }
+
+        nav.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-toggle {
+            display: block;
+        }
+
         .content {
             margin-left: 0;
+            padding-top: 60px;
+        }
+
+        .bio, section {
             width: 100%;
-            padding-top: 80px; /* Adjust for the fixed nav height */
         }
-        .bio, section, .contact-link {
-            width: 90%;
-        }
-        .gallery img {
+
+        .album-list img {
             max-width: 100px;
         }
     }
@@ -139,13 +185,13 @@
         });
         document.getElementById(id).classList.add('active');
     }
+
     function rotateQuotes() {
         const quotes = [
             "I'm not okay, I promise.",
             "Welcome to the black parade.",
             "Sometimes I give myself the creeps.",
-            "I walk a lonely road.",
-            "In my washing machine heart."
+            "I walk a lonely road."
         ];
         const quoteElement = document.getElementById('quote');
         let index = 0;
@@ -154,6 +200,11 @@
             index = (index + 1) % quotes.length;
         }, 3000);
     }
+
+    function toggleNav() {
+        document.querySelector('nav').classList.toggle('active');
+    }
+
     window.onload = function() {
         showSection('about');
         rotateQuotes();
@@ -161,6 +212,7 @@
 </script>
 </head>
 <body>
+<button class="mobile-nav-toggle" onclick="toggleNav()">☰ Menu</button>
 <nav>
     <a href="#" onclick="showSection('about')">About Me</a>
     <a href="#" onclick="showSection('albums')">Favorite Albums</a>
@@ -178,4 +230,32 @@
         <h2>About Me</h2>
         <p>Hey, I'm Harry, but you might know me as thatemoboythatexists. I'm gay and emo. Very good with computers—custom made this site lol. I code in HTML, slightly C#, but suck at C#.</p>
     </section>
-    <section id
+    <section id="albums">
+        <h2>Favorite Albums</h2>
+        <ul class="album-list">
+            <li><img src="album1.jpg" alt="Album 1"> American Idiot by Green Day</li>
+            <li><img src="album2.jpg" alt="Album 2"> The Black Parade by My Chemical Romance</li>
+            <li><img src="album3.jpg" alt="Album 3"> Nevermind by Nirvana</li>
+            <li><img src="album4.jpg" alt="Album 4"> 21st Century Breakdown by Green Day</li>
+            <li><img src="album5.jpg" alt="Album 5"> Three Cheers for Sweet Revenge by My Chemical Romance</li>
+            <li><img src="album6.jpg" alt="Album 6"> Saviors by Green Day</li>
+            <li><img src="album7.jpg" alt="Album 7"> Dookie by Green Day</li>
+            <li><img src="album8.jpg" alt="Album 8"> Blurryface by Twenty One Pilots</li>
+            <li><img src="album9.jpg" alt="Album 9"> Vessel by Twenty One Pilots</li>
+            <li><img src="album10.jpg" alt="Album 10"> Clancy by Twenty One Pilots</li>
+        </ul>
+    </section>
+    <section id="gallery">
+        <h2>Favorite Bands Pictures</h2>
+        <div class="gallery">
+            <img src="image1.jpg" alt="Emo Image 1">
+            <img src="image2.jpg" alt="Emo Image 2">
+            <img src="image3.jpg" alt="Emo Image 3">
+            <img src="image4.jpg" alt="Emo Image 4">
+            <img src="image5.jpg" alt="Emo Image 5">
+            <img src="image6.jpg" alt="Emo Image 6">
+        </div>
+    </section>
+</div>
+</body>
+</html>
