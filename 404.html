@@ -1,56 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 - Page Not Found</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>404 - Page Not Found</title>
+  <style>
+    /* Reset some basic styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-        background: linear-gradient(to bottom, #000000, #990000);
-        color: #ffffff;
-        font-family: 'Courier New', Courier, monospace;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background-color: #1d1d1d;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
-    header {
-        text-align: center;
-        padding: 50px;
-        width: 100%;
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
-    nav {
-        text-align: center;
-        margin: 20px;
-        width: 100%;
+
+    .error-box {
+      background: linear-gradient(to right, #ff0000, #a00000);
+      padding: 40px 60px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      position: relative;
     }
-    nav a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 18px;
+
+    h1 {
+      font-size: 120px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
     }
-    .content {
-        margin: 50px;
-        border: 1px solid #990000;
-        padding: 20px;
-        text-align: center;
+
+    p {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
     }
-</style>
+
+    .go-home {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff0000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .go-home:hover {
+      background-color: #c10000;
+      transform: translateY(-3px);
+    }
+
+    .go-home:active {
+      transform: translateY(0);
+    }
+
+    /* Animation effect for the page */
+    @keyframes shake {
+      0% { transform: translateX(-10px); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+
+    .error-box:hover {
+      animation: shake 0.5s ease-in-out;
+    }
+  </style>
 </head>
 <body>
-<header>
-    <h1>404 - Page Not Found</h1>
-</header>
-<nav>
-    <a href="index.html">Home</a>
-</nav>
-<div class="content">
-    <h2>Oops!</h2>
-    <p>The page you're looking for can't be found. But don't worry, even the best of us get lost sometimes.</p>
-</div>
+  <div class="container">
+    <div class="error-box">
+      <h1>404</h1>
+      <p>Oops! The page you're looking for cannot be found.</p>
+      <p>The page might have been moved or deleted.</p>
+      <a href="/" class="go-home">Go Back Home</a>
+    </div>
+  </div>
 </body>
 </html>
