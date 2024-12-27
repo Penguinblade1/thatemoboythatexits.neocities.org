@@ -1,594 +1,305 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Harrys Emo Room</title>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Special+Elite&display=swap');
-
         
-
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
         }
-
-
 
         body {
-
             font-family: 'Special Elite', cursive;
-
             background-color: #000000;
-
             color: #ffffff;
-
             line-height: 1.6;
-
             overflow-x: hidden;
-
         }
-
-
 
         header {
-
             background: linear-gradient(45deg, #1a0000, #000000);
-
             text-align: center;
-
             padding: 2em;
-
             position: relative;
-
             border-bottom: 3px solid #ff0000;
-
             box-shadow: 0 0 20px #ff000066;
-
         }
-
-
 
         h1 {
-
             font-family: 'Nosifer', cursive;
-
             font-size: 3em;
-
             color: #ff0000;
-
             text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-
             margin-bottom: 0.5em;
-
             animation: glow 2s ease-in-out infinite alternate;
-
         }
-
-
 
         .social-links {
-
             margin-top: 1em;
-
         }
-
-
 
         .social-links a {
-
             color: #ff0000;
-
             text-decoration: none;
-
             margin: 0 15px;
-
             font-size: 1.2em;
-
             transition: all 0.3s ease;
-
             position: relative;
-
             display: inline-block;
-
         }
-
-
 
         .social-links a:hover {
-
             color: #ffffff;
-
             transform: scale(1.1);
-
             text-shadow: 0 0 10px #ff0000;
-
         }
-
-
 
         .social-links a::after {
-
             content: '';
-
             position: absolute;
-
             width: 100%;
-
             height: 2px;
-
             bottom: -5px;
-
             left: 0;
-
             background-color: #ff0000;
-
             transform: scaleX(0);
-
             transition: transform 0.3s ease;
-
         }
-
-
 
         .social-links a:hover::after {
-
             transform: scaleX(1);
-
         }
-
-
 
         section {
-
             padding: 3em 2em;
-
             margin: 2em 0;
-
             background: linear-gradient(180deg, #0a0000, #000000);
-
             border-top: 1px solid #ff000033;
-
             border-bottom: 1px solid #ff000033;
-
         }
-
-
 
         h2 {
-
             color: #ff0000;
-
             text-align: center;
-
             margin-bottom: 1.5em;
-
             font-family: 'Nosifer', cursive;
-
             text-shadow: 0 0 5px #ff0000;
-
         }
-
-
 
         .container {
-
             display: grid;
-
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
             gap: 2em;
-
             padding: 1em;
-
             max-width: 1200px;
-
             margin: 0 auto;
-
         }
-
-
 
         .card {
-
             background: #1a0000;
-
             padding: 1em;
-
             border-radius: 15px;
-
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-
             transition: all 0.4s ease;
-
             position: relative;
-
             overflow: hidden;
-
             border: 1px solid #ff000033;
-
         }
-
-
 
         .card:hover {
-
             transform: translateY(-10px) scale(1.02);
-
             box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
-
         }
-
-
 
         .card::before {
-
             content: '';
-
             position: absolute;
-
             top: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 100%;
-
             background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1), transparent);
-
             transform: translateX(-100%);
-
             transition: 0.5s;
-
         }
-
-
 
         .card:hover::before {
-
             transform: translateX(100%);
-
         }
-
-
 
         .card::after {
-
             content: attr(data-band);
-
             position: absolute;
-
             bottom: 10px;
-
             left: 0;
-
             right: 0;
-
             color: #ffffff;
-
             font-size: 1.2em;
-
             text-align: center;
-
             opacity: 0;
-
             transition: opacity 0.3s ease;
-
         }
-
-
 
         .card:hover::after {
-
             opacity: 1;
-
         }
-
-
 
         img {
-
             width: 100%;
-
             height: 250px;
-
             object-fit: cover;
-
             border-radius: 10px;
-
             border: 2px solid #ff000033;
-
             transition: all 0.3s ease;
-
         }
-
-
 
         .card:hover img {
-
             border-color: #ff0000;
-
             filter: brightness(1.2);
-
         }
-
-
 
         .spotify-section {
-
             text-align: center;
-
         }
-
-
 
         iframe {
-
             border-radius: 15px;
-
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-
             margin: 0 auto;
-
             max-width: 100%;
-
         }
-
-
 
         @keyframes glow {
-
             from {
-
                 text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-
             }
-
             to {
-
                 text-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
-
             }
-
         }
-
-
 
         @media (max-width: 768px) {
-
             h1 {
-
                 font-size: 2em;
-
             }
-
             
-
             .container {
-
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
             }
-
         }
-
     </style>
-
 </head>
-
 <body>
-
     <header>
-
         <h1>Harrys Emo Room</h1>
-
         <div class="social-links">
-
             <a href="https://www.tiktok.com/@thatemoboythatexists"><i class="fab fa-tiktok"></i> TikTok</a>
-
             <a href="https://www.instagram.com/thatemoboythatexists"><i class="fab fa-instagram"></i> Instagram</a>
-
             <a href="https://youtube.com/@nicknel2on_?si=WYiuo_s2E0Wrmyql"><i class="fab fa-youtube"></i> Youtube</a>
-
             <a href="https://github.com/thatemoboythatexists/thatemoboythatexits.neocities.org"><i class="fab fa-github"></i> Source Code</a>
-
+            <a href="https://spacehey.com/profile?id=2981872"><i class="fab fa-spacehey"></i>spacehey aka 2020s myspace</a>
+            <a href="https://steamcommunity.com/id/n1cknel2on_/"><i class="fab fa-steam"></i>steam</a>
             
-
         </div>
-
         </div>
-
     </header>
 
-
-
     <section class="spotify-section">
-
         <h2>Current Playlist that i use</h2>
-
         <iframe src="https://open.spotify.com/embed/playlist/2BP8iZxorAl3x3lJYHKUf9?si=8sUm-WKGRhWxyxNvR_nn9Q" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
     </section>
 
-
-
     <section>
-
         <h2>Favorite Albums</h2>
-
         <div class="container">
-
             <div class="card">
-
                 <img src="album1.jpg" alt="Album 1">
-
             </div>
-
             <div class="card">
-
                 <img src="album2.jpg" alt="Album 2">
-
             </div>
-
             <div class="card">
-
                 <img src="album3.jpg" alt="Album 3">
-
             </div>
-
             <div class="card">
-
                 <img src="album4.jpg" alt="Album 4">
-
             </div>
-
             <div class="card">
-
                 <img src="album5.jpg" alt="Album 5">
-
             </div>
-
             <div class="card">
-
                 <img src="album6.jpg" alt="Album 6">
-
             </div>
-
             <div class="card">
-
                 <img src="album7.jpg" alt="Album 7">
-
             </div>
-
             <div class="card">
-
                 <img src="album8.jpg" alt="Album 8">
-
             </div>
-
             <div class="card">
-
                 <img src="album9.jpg" alt="Album 9">
-
             </div>
-
             <div class="card">
-
                 <img src="album10.jpg" alt="Album 10">
-
             </div>
-
             <div class="card">
-
                 <img src="album11.jpg" alt="Album 11">
-
             </div>
-
             <div class="card">
-
                 <img src="album12.jpg" alt="Album 12">
-
             </div>
-
             <div class="card">
-
                 <img src="album13.jpg" alt="Album 13">
-
             </div>
-
             <div class="card">
-
                 <img src="album14.jpg" alt="Album 14">
-
             </div>
-
             <div class="card">
-
                 <img src="album15.jpg" alt="Album 15">
-
             </div>
-
             <div class="card">
-
                 <img src="album16.jpg" alt="Album 16">
-
             </div>
-
             <div class="card">
-
                 <img src="album17.jpg" alt="Album 17">
-
             </div>
-
+            
+            </div>
+            <div class="card">
+                <img src="album18.jpg" alt="Album 18">
+            </div>
         </div>
-
     </section>
-
-
 
     <section>
-
         <h2>Favorite Bands</h2>
-
         <div class="container">
-
             <div class="card" data-band="My Chemical Romance">
-
                 <img src="image1.jpg" alt="My Chemical Romance">
-
             </div>
-
             <div class="card" data-band="Green Day">
-
                 <img src="image2.jpg" alt="Green Day">
-
             </div>
-
             <div class="card" data-band="Twenty One Pilots">
-
                 <img src="image3.jpg" alt="Twenty One Pilots">
-
             </div>
-
             <div class="card" data-band="Nirvana">
-
                 <img src="image4.jpg" alt="Nirvana">
-
             </div>
-
             <div class="card" data-band="Linkin Park">
-
                 <img src="image5.jpg" alt="Linkin Park">
-
             </div>
-
             <div class="card" data-band="Radiohead">
-
                 <img src="image6.jpg" alt="Radiohead">
-
             </div>
-
         </div>
-
     </section>
-
 </body>
-
 </html>
 
